@@ -1,0 +1,13 @@
+.background {
+    background-image: url('../assets/loginbg.png'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* Ensure the background covers the entire viewport */
+    margin: 0 !important; /* Reset default margin */
+    padding: 0 !important; /* Reset default padding */
+  }
+
+body {
+  margin: 0 !important;
+  width: inherit;
+}
