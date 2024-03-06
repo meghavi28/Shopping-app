@@ -5,8 +5,10 @@ import dayjs from "dayjs";
 import * as Yup from "yup";
 import "./signup.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignupComponent: React.FC = () => {
+  const navigate = useNavigate();
   const initialValues = {
     name: "",
     email: "",
@@ -144,6 +146,9 @@ const SignupComponent: React.FC = () => {
           </Form>
         )}
       </Formik>
+      <Button type="text" onClick={() => navigate("/login")}>
+        Login
+      </Button>
     </div>
   );
 };

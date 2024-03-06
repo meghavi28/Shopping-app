@@ -87,6 +87,9 @@ const LoginComponent: React.FC = () => {
           </Form>
         )}
       </Formik>
+      <Button type="text" onClick={() => navigate("/signup")}>
+        Sign up
+      </Button>
     </div>
   );
 };
