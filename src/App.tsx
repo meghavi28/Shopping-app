@@ -6,10 +6,9 @@ import Signup from "./pages/Signup";
 import ProductDetailPage from "./pages/ProductDetail";
 import CartPage from "./components/Cart/Cart";
 import {Navigate } from 'react-router-dom';
-import { useSelector } from "react-redux";
 
 const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
-  const loggedInUser = useSelector((state:any)=>state.loggedInUser)
+  const loggedInUser = localStorage.getItem("Token")
   const { children } = props
 
   return loggedInUser ? (
@@ -18,7 +17,6 @@ const PrivateRoute = (props: { children: React.ReactNode }): JSX.Element => {
     <Navigate
       replace={true}
       to="/login"
-      // state={{ from: `${location.pathname}${location.search}` }}
     />
   )
 }

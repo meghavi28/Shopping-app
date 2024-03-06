@@ -1,15 +1,24 @@
 import React from "react";
 import { List, Button } from "antd";
 import { ShoppingCartOutlined,DownloadOutlined } from "@ant-design/icons";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import InvoiceDocument from './InvoiceDocument';
 import CustomLayout from "../Layout/Layout";
 
 const CartPage: React.FC = () => {
     const carts: any = useSelector((state: any)=> state.cart)
+    const dispatch = useDispatch()
 
-  const handleRemoveFromCart = (productId: number) => {};
+    console.log("carts",carts)
+
+  const handleRemoveFromCart = (productId: number) => {
+    console.log("productId",productId)
+    dispatch({
+      type:"REMOVEFROMCART",
+      payload: productId
+    })
+  };
 
   const calculateTotalAmount = () => {
     return carts.reduce((total:any, product:any) => total + product.price, 0);

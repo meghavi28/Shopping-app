@@ -8,12 +8,14 @@ const intialState = {
 const reducer:any = (state = intialState, action:any) => {
     switch(action.type){
         case "LOGIN":{
+            localStorage.setItem("Token",action.payload.token )
             return {
                 ...state,
                 loggedInUser:action.payload
             }
         }
         case "LOGOUT":{
+            localStorage.removeItem("Token")
             return {
                 ...state,
                 loggedInUser:null
@@ -23,6 +25,12 @@ const reducer:any = (state = intialState, action:any) => {
             return {
                 ...state,
                 cart:[...state.cart, action.payload]
+            }
+        }
+        case "REMOVEFROMCART":{
+            return {
+                ...state,
+                cart:[...state.cart].filter((e:any)=>e.id !== action.payload)
             }
         }
         default:
