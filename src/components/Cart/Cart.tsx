@@ -4,6 +4,7 @@ import { ShoppingCartOutlined,DownloadOutlined } from "@ant-design/icons";
 import { useSelector } from 'react-redux'
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import InvoiceDocument from './InvoiceDocument';
+import CustomLayout from "../Layout/Layout";
 
 const CartPage: React.FC = () => {
     const carts: any = useSelector((state: any)=> state.cart)
@@ -15,6 +16,7 @@ const CartPage: React.FC = () => {
   };
 
   return (
+    <CustomLayout>
     <div style={{display:"flex", justifyContent:"center"}}>
     <div style={{ padding: "20px", width:"60%"}}>
       <h1>
@@ -52,6 +54,7 @@ const CartPage: React.FC = () => {
       </div>
     </div>
     </div>
+    </CustomLayout>
   );
 };
 

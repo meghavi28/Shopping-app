@@ -4,9 +4,7 @@ import CustomLayout from "../components/Layout/Layout";
 
 const CartPage: React.FC = () => {
   return (
-    <CustomLayout>
       <Cart />
-    </CustomLayout>
   );
 };
 
