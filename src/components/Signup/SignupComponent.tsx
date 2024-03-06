@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import { Input, Button, DatePicker, message } from "antd";
+import { Input, Button, DatePicker } from "antd";
 import dayjs from "dayjs";
 import * as Yup from "yup";
 import "./signup.css";
@@ -30,8 +30,7 @@ const SignupComponent: React.FC = () => {
   });
 
   const onSubmit = async (values: any) => {
-    const response = await axios.post("http://localhost:3300/signup", values);
-    console.log(response.data);
+    await axios.post("http://localhost:3300/signup", values);
   };
   return (
     <div className="mainDiv">

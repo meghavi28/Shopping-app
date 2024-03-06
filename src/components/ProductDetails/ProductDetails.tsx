@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Descriptions, Spin } from "antd";
+import { Spin } from "antd";
 
 interface Product {
   id: number;
@@ -46,21 +46,32 @@ const ProductDetail: React.FC = () => {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Product Details</h1>
-      <Descriptions title={product.title}>
-        <Descriptions.Item label="ID">{product.id}</Descriptions.Item>
-        <Descriptions.Item label="Price">${product.price}</Descriptions.Item>
-        <Descriptions.Item label="Category">
-          {product.category}
-        </Descriptions.Item>
-        <Descriptions.Item label="Description">
-          {product.description}
-        </Descriptions.Item>
-      </Descriptions>
-      <img
-        src={product.image}
-        alt={product.title}
-        style={{ marginTop: "20px", maxWidth: "100%" }}
-      />
+      <div style={{ display: "flex" }}>
+        <img
+          src={product.image}
+          alt={product.title}
+          style={{ marginTop: "20px", width: 300, height: 300 }}
+        />
+        <div style={{ marginLeft: "20px" }}>
+          <h1>{product.title}</h1>
+          <div>
+            <h5>ID:</h5>
+            {product.id}
+          </div>
+          <div>
+            <h5>Price:</h5>
+            {product.price}
+          </div>
+          <div>
+            <h5>Category:</h5>
+            {product.category}
+          </div>
+          <div>
+            <h5>Description</h5>
+            {product.description}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

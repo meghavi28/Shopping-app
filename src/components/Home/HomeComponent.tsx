@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Row, Col, Pagination,Select,Badge } from "antd";
+import { Row, Col, Pagination, Select } from "antd";
 import ProductCard from "./ProductCard";
-import { ShoppingCartOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+
 const { Option } = Select;
 
 const ProductList: React.FC = () => {
-  const cart = useSelector((state:any) => state.cart);
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [categories, setCategories] = useState([]);
@@ -72,43 +69,32 @@ const ProductList: React.FC = () => {
         <div
           style={{
             height: "70px",
-            // border: "1px solid #ccc",
             marginBottom: "20px",
             marginLeft: "20px",
           }}
         >
           <h1>Product List</h1>
         </div>
-          <Link to={"/cart"}>
-        <div
-          style={{
-            position: "absolute",
-            top: 20,
-            right: 20,
-            cursor: "pointer",
-          }}
-        >
-          <Badge count={cart.length ?? 0}>
-            <ShoppingCartOutlined
-              style={{ fontSize: "35px", color: "#1890ff" }}
-            />
-          </Badge>
-        </div>
-        </Link>
       </div>
-      <div style={{display:"flex", justifyContent:"flex-end", marginBottom:"20px"}}>
-      <Select
-        defaultValue={selectedCategory}
-        style={{ width: 200 }}
-        onChange={handleCategoryChange}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: "20px",
+        }}
       >
-        <Option value="">All Categories</Option>
-        {categories.map((category: string) => (
-          <Option key={category} value={category}>
-            {category}
-          </Option>
-        ))}
-      </Select>
+        <Select
+          defaultValue={selectedCategory}
+          style={{ width: 200 }}
+          onChange={handleCategoryChange}
+        >
+          <Option value="">All Categories</Option>
+          {categories.map((category: string) => (
+            <Option key={category} value={category}>
+              {category}
+            </Option>
+          ))}
+        </Select>
       </div>
       <Row gutter={[16, 16]}>
         {products.map((product: any) => (
@@ -117,11 +103,13 @@ const ProductList: React.FC = () => {
           </Col>
         ))}
       </Row>
-      <Pagination
-        current={currentPage}
-        total={products.length < 10 ? 1 : totalProductsCount}
-        onChange={handlePageChange}
-      />
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <Pagination
+          current={currentPage}
+          total={products.length < 10 ? 1 : totalProductsCount}
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };
